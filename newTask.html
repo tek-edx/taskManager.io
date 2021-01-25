@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style1.css">
+
+   
+    <title>New Task</title>
+</head>
+
+<body>
+    <header>
+
+        
+        <nav class="navbar-light navbar-expand-sm bg-light text-muted ">
+            <!-- Add the <a> below: -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Make the follow elements into a nav component: -->
+                <ul class="navbar-nav dashboard-header'>
+                    <li class="nav-item active pl-5 ">
+                        <a href="newTask.html" class="nav-link">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"   class="nav-link" id="carttask-list" data-toggle="modal" data-target="#cartList">Tasks On List <span id='task-badge' ></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Task Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="jumbotron jumbotron-fluid text-center ">
+            <div class="container ">
+                <h1 class="display-4"> Task Sheet </h1>
+                <p class="lead">Please enter the detail for the new task </p>
+            </div>
+        </div>
+
+
+       
+
+    </header>
+    <main class="container mt-3 ">
+        <form id="formId">
+            <div class="form-group flex">
+                <label for="newTaskName">Task</label>
+                <input type="text" class="form-control" id="newTaskName" name="Task Name" placeholder="Task Name">
+            </div>
+            </div>
+            <div class="flex assign-date">
+                <div class="form-group assign-field ">
+
+                    <label for="assignedTo">Assignee</label>
+                    <select class="form-control" id="assignedTo" name="AssignedTo" value="assignedTo">
+
+                        <option value="" selected>Pick SomeOne</option>
+                        <option>Tek</option>
+                        <option>Arda</option>
+                        <option>Max</option> 
+                    </select>
+                </div>
+                <div class="date">
+                    <input type="date" id="taskDueDate" name="Due Date" class="datepicker" min="2020-12-17"
+                        max="2021-12-31">
+                </div>
+            </div>
+            <div class="form-group status">
+                <label for="status"> Status </label>
+                <select class="form-control" id="status" name="Status">
+                    <option value="">Choose the Task Status</option>
+                    <option value="TO DO">TO DO </option>
+                    <option value="PROGRESS">PROGRESS</option>
+                    <option value="REVIEW">REVIEW</option>
+                    <option value="DONE">DONE </option>
+                </select>
+                <div class="form-group text-box">
+                    <label for="newTaskDescription">Task Description</label>
+                    <textarea class="form-control" id="newTaskDescription" name="Task Description" rows="12"
+                        onkeyup="count_up(this);" placeholder="Description"> </textarea>
+                    <span class="text-muted pull-right" id="count1">0</span>
+                    <br>
+                </div>
+                <div id='alertmessage' class="alert alert-danger container" style="display:hidden; "></div>
+                <div class="flex-button">
+                    <button type="submit" class="btn btn-success">SAVE</button>
+                    <button type="button" class="btn btn-success">ADD NEXT</button>
+                </div>
+        </form>
+       
+
+        <!--  Model to edit the-->
+        <!-- Button trigger modal -->
+
+        <!-- MODAL TO DISPLAY THE CART TASKS STARTED  -->
+
+       
+        
+        <!-- Modal -->
+        <div class="modal fade" id="cartList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+
+                        <!--  MODEL TO DISPLAY THE TASKS IN A MODAL STARTED  -->
+
+                        <section id="cart-display-section" class='container' >
+                            <ul id="cartlist-display" class="list-inline hidden-list row">
+
+                            </ul>
+                                
+                        </section> 
+
+                        
+
+                       
+                        <!--  MODEL TO DISPLAY THE TASKS IN A MODAL END  -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button"  id="edit-submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL TO DISPLAY THE CART TASKS STARTED  -->
+       
+        
+        <!-- Modal -->
+        
+    </main>
+    <footer>
+        Tek and Arda@&copy;
+    </footer>
+
+    
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="js/taskManager.js"></script>
+
+    <script src="js/newTask.js"></script>
+</body>
+
+</html>
